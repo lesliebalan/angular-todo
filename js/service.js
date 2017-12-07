@@ -1,5 +1,6 @@
 angular.module('UserService', [])
     .factory('UserAPIService', function($http) {
+ 
         UserAPIService = {
             callAPI: function(url, data) {
                 return $http.post(url, data);
@@ -8,7 +9,7 @@ angular.module('UserService', [])
         return UserAPIService;
     });
 
-angular.module('TodoService', [])
+    angular.module('TodoService', [])
     .factory('TodoAPIService', function($http) {
         TodoAPIService = {
             getTodos: function(url, data, token) {
@@ -19,14 +20,14 @@ angular.module('TodoService', [])
                 var header = "Authorization: JWT " + token;
                 return $http.post(url, data, header);
             },
-            editTodo: function(url, data, token) {
+             editTodo: function(url, data, token) {
                 var header = "Authorization: JWT " + token;
                 return $http.put(url, data, header);
             },
             deleteTodo: function(url, token) {
                 var header = "Authorization: JWT " + token;
-                return $http.delete(url, token, header);
-            }
-        };
+                return $http.delete(url, token);
+            },
+        }
         return TodoAPIService;
     });
